@@ -54,7 +54,7 @@ export default function Resposta(props: RespostaProps) {
       onClick={() => props.respostaFornecida(props.indice)}
     >
       <div className={styles.conteudoResposta}>
-        {!resposta.revelada ? (
+        {resposta.naoRevelada ? (
           <div className={styles.frente}>{respostaOculta()}</div>
         ) : (
           <div className={styles.verso}>{respostaRevelada()}</div>
