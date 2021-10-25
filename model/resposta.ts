@@ -6,7 +6,7 @@ export default class RespostaModel {
   /**
    *
    */
-  constructor(valor: string, certa: boolean, revelada: false) {
+  constructor(valor: string, certa: boolean, revelada = false) {
     this.#valor = valor;
     this.#certa = certa;
     this.#revelada = revelada;
@@ -22,5 +22,25 @@ export default class RespostaModel {
 
   get revelada() {
     return this.#revelada;
+  }
+
+  static certa(valor: string) {
+    return new RespostaModel(valor, true);
+  }
+
+  static errada(valor: string) {
+    return new RespostaModel(valor, false);
+  }
+
+  revelar() {
+    return new RespostaModel(this.#valor, this.#certa, true);
+  }
+
+  paraObjeto() {
+    return {
+      valor: this.#valor,
+      certa: this.#certa,
+      revelada: this.#revelada,
+    };
   }
 }
