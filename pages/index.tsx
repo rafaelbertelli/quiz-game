@@ -41,6 +41,7 @@ export default function Home() {
         valor={questao}
         respostaFornecida={respostaFornecida}
         tempoEsgotado={tempoEsgotado}
+        // tempoPraResponder={10}
       />
     </div>
   );
