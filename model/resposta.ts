@@ -24,6 +24,10 @@ export default class RespostaModel {
     return this.#revelada;
   }
 
+  get naoRevelada() {
+    return !this.#revelada;
+  }
+
   static certa(valor: string) {
     return new RespostaModel(valor, true);
   }
