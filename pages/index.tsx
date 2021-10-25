@@ -18,8 +18,14 @@ const questaoMock = new QuestaoModel(
 export default function Home() {
   const [questao, setQuestao] = useState(questaoMock);
 
+  function tempoEsgotado() {
+    setQuestao(questao.responderCom(-1));
+  }
+
   function respostaFornecida(indice: number) {
-    setQuestao(questao.responderCom(indice));
+    if (questao.naoRespondida) {
+      setQuestao(questao.responderCom(indice));
+    }
   }
 
   return (
@@ -31,7 +37,11 @@ export default function Home() {
         height: "100vh",
       }}
     >
-      <Questao valor={questao} respostaFornecida={respostaFornecida} />
+      <Questao
+        valor={questao}
+        respostaFornecida={respostaFornecida}
+        tempoEsgotado={tempoEsgotado}
+      />
     </div>
   );
 }
