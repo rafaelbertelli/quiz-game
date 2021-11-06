@@ -9,6 +9,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (questaoSelecionada) {
     res.status(200).json(questaoSelecionada.embaralharRespostas().paraObjeto());
   } else {
-    res.status(204).send();
+    res.status(204).json({
+      data: {}
+    })
   }
 }
