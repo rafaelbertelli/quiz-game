@@ -11,6 +11,7 @@ interface RespostaProps {
 
 export default function Resposta(props: RespostaProps) {
   const resposta = props.valor;
+  const respostaReveladaCss = resposta.revelada ? styles.respostaRevelada : "";
 
   function respostaOculta() {
     return (
@@ -53,12 +54,9 @@ export default function Resposta(props: RespostaProps) {
       className={styles.resposta}
       onClick={() => props.respostaFornecida(props.indice)}
     >
-      <div className={styles.conteudoResposta}>
-        {resposta.naoRevelada ? (
-          <div className={styles.frente}>{respostaOculta()}</div>
-        ) : (
-          <div className={styles.verso}>{respostaRevelada()}</div>
-        )}
+      <div className={`${respostaReveladaCss} ${styles.conteudoResposta}`}>
+        <div className={styles.frente}>{respostaOculta()}</div>
+        <div className={styles.verso}>{respostaRevelada()}</div>
       </div>
     </div>
   );
